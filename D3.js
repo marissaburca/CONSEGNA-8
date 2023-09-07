@@ -110,67 +110,62 @@ const characters = []
   Dovrai accedere alla proprietà "name" di ogni oggetto in esso contenuto, e inserirla nell'array "characters" creato precedentemente.
   Come risultato dovresti ottenere qualcosa di simile: ["Luke Skywalker", "C-3PO", "R2-D2", etc..]
 */
-for ( let i = 0; i < starWarsCharacters.length; i++ ){
-
-  console.log(starWarsCharacters[i].name)
-  characters.push(starWarsCharacters[i].name)
- 
+for(let i=0;i<starWarsCharacters.length;i++){
+   characters.push(starWarsCharacters[i].name)
 }
 console.log(characters)
-
 /* ESERCIZIO 3
   Seguendo i passaggi precedenti crea un nuovo array chiamato "femaleCharacters" e inserisci al suo interno tutti gli oggetti femminili.
 */
 const femaleCharacters = []
-
-for( let i= 0; i<starWarsCharacters.length; i++){
-  if(starWarsCharacters[i].gender === 'female'){ 
-    femaleCharacters.push(starWarsCharacters[i])
-  }
+for(let i=0;i<starWarsCharacters.length;i++){
+  if(starWarsCharacters[i].gender === 'female'){
+  femaleCharacters.push(starWarsCharacters[i])
+}
 }
 console.log(femaleCharacters)
 /* ESERCIZIO 4
   Crea un oggetto "eyeColor" che abbia le seguenti proprietà: blue, yellow, brown, red, blue-gray.
   Ad ognuna di queste proprietà assegna come valore un array vuoto.
 */
-const eyeColor = {
-  blue : [], 
-  yellow :[],
-  brown :[],
-  red : [],
-  'blue-gray' : []
-}
 
+const eyecolor ={
+  'blue' : [], 
+  'yellow' : [], 
+  'brown' : [], 
+  'red' : [], 
+  'blue-gray' : [],
+}
 
 /* ESERCIZIO 5
   Utilizza uno switch statement per inserire uno ad uno gli oggetti dei personaggi di "starWarsCharacters" negli array relativi al colore degli occhi precedentemente creati.
   Ogni personaggio dovrà finire nell'array corrispondente al suo colore degli occhi (al valore della sua proprietà "eye_color").
 */
-for (let i=0; i< starWarsCharacters.length; i++)
-switch (starWarsCharacters[i].eye_color){
-  case 'blue' : eyeColor.blue.push(starWarsCharacters[i])
-  break
-  case 'yellow' : eyeColor.yellow.push(starWarsCharacters[i])
-  break
-  case 'brown' :eyeColor. brown.push(starWarsCharacters[i])
-  break
-  case 'red' : eyeColor.red.push(starWarsCharacters[i])
-  break
-  case 'blue-gray' : eyeColor["blue-gray"].push(starWarsCharacters[i])
-  break
-}
-console.log(eyeColor) 
+for(let i=0;i<starWarsCharacters.length;i++){
+  let color = starWarsCharacters[i].eye_color
+  switch(color){
+    case 'blue' : eyecolor.blue.push(starWarsCharacters[i])
+    break 
+    case 'yellow' : eyecolor.yellow.push(starWarsCharacters[i])
+    break 
+    case 'brown' : eyecolor.brown.push(starWarsCharacters[i])
+    break 
+    case 'red' : eyecolor.red.push(starWarsCharacters[i])
+    break 
+    case 'blue-gray' : eyecolor["blue-gray"].push(starWarsCharacters[i])
+    break 
+  }
+console.log(eyecolor)
 
 /* ESERCIZIO 6
   Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile chiamata "crewMass".
 */
 let crewMass = 0
-let i = 0
-
- while ( i < starWarsCharacters.length){
-   crewMass += starWarsCharacters[i].mass
-   i++
- }
+while( i < starWarsCharacters.length){
+  crewMass += starWarsCharacters[i].mass
+  i++
+}
+console.log(crewMass)
 
 /* ESERCIZIO 7
   Crea uno if/else statement per rivelare la tipologia di carico utilizzando la massa totale, di un'ipotetica astronave contenente i personaggi dell'array "starWarsCharacters".
@@ -183,41 +178,49 @@ let i = 0
 
   Una volta fatto, modifica la massa di qualche elemento dell'equipaggio e vedi se riesci ad ottenere un messaggio diverso.
 */
-if(crewMass > 1000){
-  console.log('DANGER! OVERLOAD ALERT: escape from ship now!')
-} else if(crewMass > 900){
-  console.log('Critical Load: Over 900')
-}
- else if(crewMass > 700){
-  console.log('Warning: Load is over 700')
-}
- else if(crewMass > 500){
-  console.log('Ship is half loaded')
-}
- else{console.log('Ship is under loaded')
+if( crewMass>1000){console.log('DANGER! OVERLOAD ALERT: escape from ship now!')}
+else if (crewMass>900){console.log('Critical Load: Over 900')}
+else if (crewMass>700){console.log('Warning: Load is over 700')}
+else if (crewMass>=500){console.log('Ship is half loaded')}
+else{console.log('Ship is under loaded')}
+
 }
 /* ESERCIZIO 8
   Usa un for loop per cambiare il valore della proprietà "gender" di alcuni personaggi dal valore "n/a" a "robot" (Tip: puoi effettuare la riassegnazione del valore corrispondente o creare un nuovo array)
 */
-for(let i=0; i < starWarsCharacters.length; i++){
+for(let i =0; i< starWarsCharacters.length; i++){
   if(starWarsCharacters[i].gender === 'n/a'){
-   starWarsCharacters[i].gender='robot' }
-  
-}
-console.log(starWarsCharacters)
+    starWarsCharacters[i].gender = 'robot'}
+  }
+  console.log(starWarsCharacters)
 /* --EXTRA-- ESERCIZIO 9
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "characters" prima e dopo l'operazione.
 */
-for(let i=0; i < femaleCharacters.length; i++){
-   for(let j=0; j < characters.length; j++){
-       if(femaleCharacters[i].name === characters[j])
-       {characters.splice(j,1)}
-   }
+
+for (let i = 0; i < characters.length; i++) {
+  const currentCharacter = characters[i];
+
+  for (let j = 0; j < femaleCharacters.length; j++) {
+    const currentFemaleCharacter = femaleCharacters[j];
+
+    if (currentFemaleCharacter.name === currentCharacter) {
+      characters.splice(i, 1);
+    }
+  }
 }
-console.log(characters)
+  console.log(characters) 
+
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
-const validRandom = math.floor(math.random()*10)
-const rabdomCharacter = starWarsCharacters[validRandom]
+const validX = Math.floor(Math.random() * starWarsCharacters.length)
+const randomCharacter = starWarsCharacters[validX]
+
+console.log( 'My name is ' + randomCharacter.name +', i am a '+ randomCharacter.gender +', i am tall ' + randomCharacter.height + 'cm and my weight is ' +
+ randomCharacter.mass + 'kg.') 
+ if (randomCharacter.hair_color !== 'none' && randomCharacter.hair_color !== 'n/a'){  console.log(' I have ' + randomCharacter.hair_color + ' hair ')}
+ else{'Unfortunatly i miss hair.'} 
+console.log(' My skin color is '+randomCharacter.skin_color+ ' and my eyes color is '+ randomCharacter.eye_color)
+if(randomCharacter.birth_year !== 'unknown'){ console.log(' I was born in year '+randomCharacter.birth_year)}
+ else{'I don not know when i was born'}
